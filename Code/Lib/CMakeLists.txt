@@ -19,6 +19,7 @@ set(MPHYG0022CW1_LIBRARY_SRCS
   mphyException.cpp
   # Add .cpp files here
         mphyLinearDataCreator.cpp
+        mphyNormalEquationSolverStrategy.cpp
         )
 
 set(MPHYG0022CW1_LIBRARY_HDRS
@@ -26,7 +27,8 @@ set(MPHYG0022CW1_LIBRARY_HDRS
   # Add h files here
         mphyLinearDataCreator.h
         mphyDataCreatorI.h
-        )
+        mphyLinearModelSolverStrategyI.h
+        mphyNormalEquationSolverStrategy.h)
 
 add_library(${MPHYG0022CW1_LIBRARY_NAME} ${MPHYG0022CW1_LIBRARY_HDRS} ${MPHYG0022CW1_LIBRARY_SRCS})
 

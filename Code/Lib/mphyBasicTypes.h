@@ -16,7 +16,6 @@
 #define mphyBasicTypes_h
 
 #include "mphyWin32ExportHeader.h"
-
 #include <vector>
 
 /**
@@ -50,6 +49,6 @@ namespace mphy
 {
 typedef std::vector<std::pair<double, double> > LabelledData;
 typedef std::pair<double, double> LinearSolution;
-} // end namespace
+}; // end namespace
 
 #endif
