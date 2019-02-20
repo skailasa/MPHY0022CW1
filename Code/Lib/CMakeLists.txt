@@ -18,12 +18,15 @@ set(MPHYG0022CW1_LIBRARY_SRCS
   mphyBasicTypes.cpp
   mphyException.cpp
   # Add .cpp files here
-)
+        mphyLinearDataCreator.cpp
+        )
 
 set(MPHYG0022CW1_LIBRARY_HDRS
   mphyExceptionMacro.h
   # Add h files here
-)
+        mphyLinearDataCreator.h
+        mphyDataCreatorI.h
+        )
 
 add_library(${MPHYG0022CW1_LIBRARY_NAME} ${MPHYG0022CW1_LIBRARY_HDRS} ${MPHYG0022CW1_LIBRARY_SRCS})
 
