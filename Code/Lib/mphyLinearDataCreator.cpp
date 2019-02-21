@@ -15,7 +15,7 @@ _theta_0(t0), _theta_1(t1), _noise(n){};
 // methods
 
 // Helper function to merge together two vectors of doubles
-mphy::LabelledData merge(std::vector<double> A, std::vector<double> B) {
+mphy::LabelledData merge(std::vector<double> &A, std::vector<double> &B) {
     mphy::LabelledData target( A.size() < B.size() ? A.size() : B.size());
 
     for (int i = 0; i < target.size(); i++) {

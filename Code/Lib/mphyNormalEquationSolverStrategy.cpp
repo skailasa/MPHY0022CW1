@@ -31,8 +31,6 @@ mphy::LinearSolution mphyNormalEquationSolverStrategy::FitData(mphy::LabelledDat
     for (int i=0; i<data.size(); i++) {
         X(i, 1) = data[i].first;
         y(i) = data[i].second;
-
-        std::cout << data[i].first << ' ' <<data[i].second << std::endl;
     }
 
     // Solve normal equation
