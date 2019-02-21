@@ -9,7 +9,6 @@
 
 class mphyNormalEquationSolverStrategy : public mphyAbstractSolver{
 public:
-public:
     mphyNormalEquationSolverStrategy();
     ~mphyNormalEquationSolverStrategy();
     mphy::LinearSolution FitData(mphy::LabelledData);

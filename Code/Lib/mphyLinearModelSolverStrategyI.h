@@ -9,7 +9,7 @@
 
 class mphyAbstractSolver {
 public:
-    virtual mphy::LinearSolution GetData(mphy::LabelledData) = 0;
+    virtual mphy::LinearSolution FitData(mphy::LabelledData) = 0;
 };
 
 #endif //MPHYG0022CW1_MPHYLINEARMODELSOLVERSTRATEGYI_H

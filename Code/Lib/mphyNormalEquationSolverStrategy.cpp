@@ -2,18 +2,44 @@
 // Created by Srinath Kailasa on 2019-02-20.
 //
 
+#include <iostream>
+#include "Eigen/Dense"
 #include "mphyNormalEquationSolverStrategy.h"
 
+
 // constructors/destructors
+
 mphyNormalEquationSolverStrategy::mphyNormalEquationSolverStrategy() = default;
 
 mphyNormalEquationSolverStrategy::~mphyNormalEquationSolverStrategy() = default;
 
 // methods
-mphy::LinearSolution mphyNormalEquationSolverStrategy::FitData(mphy::LabelledData)
+
+// Strategy to solve the linear least squares problems using the normal equation
+mphy::LinearSolution mphyNormalEquationSolverStrategy::FitData(mphy::LabelledData data)
 {
-    mphy::LinearSolution a;
-    a.first = 1;
-    a.second = 2;
-    return a;
+    // Initialise storage buffers
+    mphy::LinearSolution result;
+
+    Eigen::MatrixXd X(data.size(), 2);
+    Eigen::MatrixXd y(data.size(), 1);
+
+    X = Eigen::MatrixXd::Ones(data.size(), 2);
+    y = Eigen::MatrixXd::Zero(data.size(), 1);
+
+    // Copy data to Eigen matrices
+    for (int i=0; i<data.size(); i++) {
+        X(i, 1) = data[i].first;
+        y(i) = data[i].second;
+
+        std::cout << data[i].first << ' ' <<data[i].second << std::endl;
+    }
+
+    // Solve normal equation
+    Eigen::MatrixXd res = (X.transpose() * X).ldlt().solve(X.transpose() * y);
+
+    // Copy result back to solution container
+    result.first = res(0);
+    result.second = res(1);
+    return result;
 }

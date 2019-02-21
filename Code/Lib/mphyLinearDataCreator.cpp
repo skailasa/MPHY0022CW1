@@ -14,8 +14,8 @@ _theta_0(t0), _theta_1(t1), _noise(n){};
 
 // methods
 
+// Helper function to merge together two vectors of doubles
 mphy::LabelledData merge(std::vector<double> A, std::vector<double> B) {
-    // Helper function to merge together two vectors of doubles
     mphy::LabelledData target( A.size() < B.size() ? A.size() : B.size());
 
     for (int i = 0; i < target.size(); i++) {
@@ -24,6 +24,7 @@ mphy::LabelledData merge(std::vector<double> A, std::vector<double> B) {
     return target;
 }
 
+// Creates 1000 random points (x, y) which can take values between 1 and 100 inc
 mphy::LabelledData mphyLinearDataCreator::GetData() {
     std::vector<double> xVec;
     std::vector<double> yVec;

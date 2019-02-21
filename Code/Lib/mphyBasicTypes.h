@@ -48,6 +48,7 @@
 namespace mphy
 {
 typedef std::vector<std::pair<double, double> > LabelledData;
+
 typedef std::pair<double, double> LinearSolution;
 }; // end namespace
 
