@@ -15,23 +15,21 @@
 set(MPHYG0022CW1_LIBRARY_NAME mphy0022cw1)
 
 set(MPHYG0022CW1_LIBRARY_SRCS
-  mphyBasicTypes.cpp
-  mphyException.cpp
-  # Add .cpp files here
+        mphyBasicTypes.cpp
+        mphyException.cpp
         mphyLinearDataCreator.cpp
+        mphyFileLoaderDataCreator.cpp
         mphyNormalEquationSolverStrategy.cpp
-        mphySVDSolverStrategy.cpp
-        )
+        mphySVDSolverStrategy.cpp)
 
 set(MPHYG0022CW1_LIBRARY_HDRS
-  mphyExceptionMacro.h
-  # Add h files here
-        mphyLinearDataCreator.h
+        mphyExceptionMacro.h
         mphyDataCreatorI.h
+        mphyLinearDataCreator.h
+        mphyFileLoaderDataCreator.h
         mphyLinearModelSolverStrategyI.h
         mphyNormalEquationSolverStrategy.h
-        mphySVDSolverStrategy.h
-        )
+        mphySVDSolverStrategy.h)
 
 add_library(${MPHYG0022CW1_LIBRARY_NAME} ${MPHYG0022CW1_LIBRARY_HDRS} ${MPHYG0022CW1_LIBRARY_SRCS})
 

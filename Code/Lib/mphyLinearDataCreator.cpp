@@ -18,7 +18,6 @@ _seed(seed), _nSamples(nSamples), _low(low), _high(high){};
 
 // methods
 
-// Creates 1000 random points (x, y) which can take values between 1 and 100 inc
 mphy::LabelledData mphyLinearDataCreator::GetData() {
 
     // Random number generator
