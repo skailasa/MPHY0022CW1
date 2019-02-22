@@ -7,6 +7,7 @@
 #include "mphyLinearDataCreator.h"
 #include "mphyNormalEquationSolverStrategy.h"
 #include "mphySVDSolverStrategy.h"
+#include "mphyFileLoaderDataCreator.h"
 
 
 TEST_CASE( "Test linear data creator", "[data-creator]")
@@ -41,6 +42,34 @@ TEST_CASE( "Test linear data creator", "[data-creator]")
   SECTION("Test approximately correct distribution") {
     REQUIRE(xAvg == Approx(50).epsilon(0.05));
     REQUIRE(yAvg == Approx(50).epsilon(0.05));
+  }
+}
+
+
+TEST_CASE("Test file reader", "[file-reader]")
+{
+  // Read in both test files
+  mphy::LabelledData testData1;
+  testData1 = mphyFileLoaderDataCreator("Testing/Data/TestData1.txt").GetData();
+  // Store first line of file, to check read in value against
+  std::pair<double, double> firstLine1(0.170065, 3.38151);
+
+
+  mphy::LabelledData testData2;
+  testData2 = mphyFileLoaderDataCreator("Testing/Data/TestData2.txt").GetData();
+  // Store first line of file, to check read in value against
+  std::pair<double, double> firstLine2(0.170065, 2.55157);
+
+  SECTION("Test file data read correctly") {
+    REQUIRE(testData1[0].first == firstLine1.first);
+    REQUIRE(testData1[0].second == firstLine1.second);
+    REQUIRE(testData2[0].first == firstLine2.first);
+    REQUIRE(testData2[0].second == firstLine2.second);
+  }
+
+  SECTION("Check correct number of data points read in") {
+    REQUIRE(testData1.size() == 1000);
+    REQUIRE(testData2.size() == 1000);
   }
 }
 
