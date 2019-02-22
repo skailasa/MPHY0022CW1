@@ -7,13 +7,14 @@
 
 class mphyLinearDataCreator: public mphyAbstractDataCreator{
 private:
-    double _theta_0;
-    double _theta_1;
-    double _noise;
+    unsigned int _seed;
+    unsigned int _nSamples;
+    int _low;
+    int _high;
 public:
     mphyLinearDataCreator();
     ~mphyLinearDataCreator();
-    mphyLinearDataCreator(double theta_0, double theta_1, double noise);
+    mphyLinearDataCreator(unsigned int seed, unsigned int nSamples, int low, int high);
     mphy::LabelledData GetData();
 };
 
