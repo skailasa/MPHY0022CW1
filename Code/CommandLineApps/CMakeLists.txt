@@ -14,7 +14,7 @@
 
 set(_command_line_apps
   # Put the name of your app here, without the .cpp extension.
-        app
+        LinearRegression
 )
 
 foreach(_app ${_command_line_apps})
