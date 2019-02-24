@@ -6,13 +6,15 @@
 #define MPHYG0022CW1_MPHYNORMALEQUATIONSOLVERSTRATEGY_H
 
 #include "mphyLinearModelSolverStrategyI.h"
+namespace mphy {
+    class NormalEquationSolverStrategy : public AbstractSolver {
+    public:
+        NormalEquationSolverStrategy();
 
-class mphyNormalEquationSolverStrategy : public mphyAbstractSolver{
-public:
-    mphyNormalEquationSolverStrategy();
-    ~mphyNormalEquationSolverStrategy();
-    mphy::LinearSolution FitData(mphy::LabelledData);
-};
+        ~NormalEquationSolverStrategy();
 
+        mphy::LinearSolution FitData(mphy::LabelledData);
+    };
+}
 
 #endif //MPHYG0022CW1_MPHYNORMALEQUATIONSOLVERSTRATEGY_H

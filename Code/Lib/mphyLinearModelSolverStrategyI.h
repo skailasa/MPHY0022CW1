@@ -6,10 +6,11 @@
 #define MPHYG0022CW1_MPHYLINEARMODELSOLVERSTRATEGYI_H
 
 #include "mphyBasicTypes.h"
-
-class mphyAbstractSolver {
-public:
-    virtual mphy::LinearSolution FitData(mphy::LabelledData) = 0;
-};
+namespace mphy {
+    class AbstractSolver {
+    public:
+        virtual mphy::LinearSolution FitData(mphy::LabelledData) = 0;
+    };
+}
 
 #endif //MPHYG0022CW1_MPHYLINEARMODELSOLVERSTRATEGYI_H

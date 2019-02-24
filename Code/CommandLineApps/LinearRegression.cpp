@@ -10,12 +10,6 @@
 #include "mphySVDSolverStrategy.h"
 
 
-struct Solvers {
-    mphySVDSolverStrategy svd=mphySVDSolverStrategy();
-    mphyNormalEquationSolverStrategy normal=mphyNormalEquationSolverStrategy();
-};
-
-
 int main(int argc, char **argv) {
 
     std::string helpText;
@@ -36,8 +30,6 @@ int main(int argc, char **argv) {
                "================================================================ \n"
                "See -h or --help for further usage instructions \n";
 
-    Solvers S;
-
     CLI::App app("Linear Regression App:");
     std::string file;
     std::string solver;
@@ -57,17 +49,17 @@ int main(int argc, char **argv) {
                                                      "usage instructions \n";
 
     else if (file!="" && solver!="") {
-        auto data = mphyFileLoaderDataCreator(file).GetData();
+        auto data = mphy::FileLoaderDataCreator(file).GetData();
 
         if (solver == "svd") {
-            auto res = S.svd.FitData(data);
+            auto res = mphy::SVDSolverStrategy().FitData(data);
             std::cout << "theta_0: "
                       << res.first
                       << " theta_1: "
                       << res.second << std::endl;
         }
         else if (solver == "normal") {
-            auto res = S.normal.FitData(data);
+            auto res = mphy::NormalEquationSolverStrategy().FitData(data);
             std::cout << "theta_0: "
                       << res.first
                       << " theta_1: "

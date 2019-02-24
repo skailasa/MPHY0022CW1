@@ -10,36 +10,37 @@
 
 using namespace Eigen;
 
+namespace mphy {
 // constructors/destructors
 
-mphySVDSolverStrategy::mphySVDSolverStrategy() = default;
+    SVDSolverStrategy::SVDSolverStrategy() = default;
 
-mphySVDSolverStrategy::~mphySVDSolverStrategy() = default;
+    SVDSolverStrategy::~SVDSolverStrategy() = default;
 
 // methods
 
-mphy::LinearSolution mphySVDSolverStrategy::FitData(mphy::LabelledData data)
-{
-    // Initialise storage buffers
-    mphy::LinearSolution result;
+    mphy::LinearSolution SVDSolverStrategy::FitData(mphy::LabelledData data) {
+        // Initialise storage buffers
+        mphy::LinearSolution result;
 
-    Eigen::MatrixXf X(data.size(), 2);
-    Eigen::MatrixXf y(data.size(), 1);
+        Eigen::MatrixXf X(data.size(), 2);
+        Eigen::MatrixXf y(data.size(), 1);
 
-    X = Eigen::MatrixXf::Ones(data.size(), 2);
-    y = Eigen::MatrixXf::Zero(data.size(), 1);
+        X = Eigen::MatrixXf::Ones(data.size(), 2);
+        y = Eigen::MatrixXf::Zero(data.size(), 1);
 
-    // Copy data to Eigen matrices
-    for (int i=0; i<data.size(); i++) {
-        X(i, 1) = data[i].first;
-        y(i) = data[i].second;
+        // Copy data to Eigen matrices
+        for (int i = 0; i < data.size(); i++) {
+            X(i, 1) = data[i].first;
+            y(i) = data[i].second;
+        }
+
+        JacobiSVD<MatrixXf> svdOfX(X, ComputeThinU | ComputeThinV);
+        VectorXf res = svdOfX.solve(y);
+
+        result.first = res(0);
+        result.second = res(1);
+
+        return result;
     }
-
-    JacobiSVD<MatrixXf> svdOfX(X, ComputeThinU | ComputeThinV);
-    VectorXf res = svdOfX.solve(y);
-
-    result.first = res(0);
-    result.second = res(1);
-
-    return result;
 }

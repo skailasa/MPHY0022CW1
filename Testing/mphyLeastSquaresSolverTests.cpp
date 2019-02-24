@@ -19,7 +19,7 @@ TEST_CASE( "Test linear data creator", "[data-creator]")
   int low = 1;
   int high = 100;
 
-  mphyLinearDataCreator m(seed, nSamples, low, high);
+  mphy::LinearDataCreator m(seed, nSamples, low, high);
   mphy::LabelledData data = m.GetData();
 
   // Calculate average of generated data
@@ -51,12 +51,12 @@ TEST_CASE("Test file reader", "[file-reader]")
 {
   // Read in both test files
   mphy::LabelledData testData1;
-  testData1 = mphyFileLoaderDataCreator("Testing/Data/TestData1.txt").GetData();
+  testData1 = mphy::FileLoaderDataCreator("Testing/Data/TestData1.txt").GetData();
   // Store first line of file, to check read in value against
   std::pair<double, double> firstLine1(0.170065, 3.38151);
 
   mphy::LabelledData testData2;
-  testData2 = mphyFileLoaderDataCreator("Testing/Data/TestData2.txt").GetData();
+  testData2 = mphy::FileLoaderDataCreator("Testing/Data/TestData2.txt").GetData();
   // Store first line of file, to check read in value against
   std::pair<double, double> firstLine2(0.170065, 2.55157);
 
@@ -65,7 +65,7 @@ TEST_CASE("Test file reader", "[file-reader]")
       bool thrown = false;
       try
       {
-        mphyFileLoaderDataCreator("FAKE_DATA").GetData();
+        mphy::FileLoaderDataCreator("FAKE_DATA").GetData();
       }
       catch(const  std::exception& e)
       {
@@ -98,11 +98,11 @@ TEST_CASE("Test normal equation solver", "[model-solver]")
   int high = 100;
 
   // Generate random data
-  mphyLinearDataCreator m(seed, nSamples, low, high);
+  mphy::LinearDataCreator m(seed, nSamples, low, high);
   mphy::LabelledData data = m.GetData();
 
   // Calculate result
-  mphy::LinearSolution res = mphyNormalEquationSolverStrategy().FitData(data);
+  mphy::LinearSolution res = mphy::NormalEquationSolverStrategy().FitData(data);
 
   // These expected values are calculated from the simulation parameters
   SECTION("Test approximately correct y intercept") {
@@ -125,11 +125,11 @@ TEST_CASE("Test svd solver", "[model-solver]")
   int high = 100;
 
   // Generate random data
-  mphyLinearDataCreator m(seed, nSamples, low, high);
+  mphy::LinearDataCreator m(seed, nSamples, low, high);
   mphy::LabelledData data = m.GetData();
 
   // Calculate result
-  mphy::LinearSolution res = mphySVDSolverStrategy().FitData(data);
+  mphy::LinearSolution res = mphy::SVDSolverStrategy().FitData(data);
 
   // These expected values are calculated from the simulation parameters
   SECTION("Test approximately correct y intercept") {

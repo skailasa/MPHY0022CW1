@@ -7,9 +7,13 @@
 
 #include "mphyBasicTypes.h"
 
-class mphyAbstractDataCreator {
-public:
-    virtual mphy::LabelledData GetData() = 0;
-};
+namespace mphy {
+
+    class AbstractDataCreator {
+    public:
+        virtual mphy::LabelledData GetData() = 0;
+    };
+
+}
 
 #endif //MPHYG0022CW1_MPHYDATACREATORI_H

@@ -5,17 +5,24 @@
 #include "mphyDataCreatorI.h"
 #include "mphyBasicTypes.h"
 
-class mphyLinearDataCreator: public mphyAbstractDataCreator{
-private:
-    unsigned int _seed;
-    unsigned int _nSamples;
-    int _low;
-    int _high;
-public:
-    mphyLinearDataCreator();
-    ~mphyLinearDataCreator();
-    mphyLinearDataCreator(unsigned int seed, unsigned int nSamples, int low, int high);
-    mphy::LabelledData GetData();
-};
+namespace mphy {
+
+    class LinearDataCreator : public AbstractDataCreator {
+    private:
+        unsigned int _seed;
+        unsigned int _nSamples;
+        int _low;
+        int _high;
+    public:
+        LinearDataCreator();
+
+        ~LinearDataCreator();
+
+        LinearDataCreator(unsigned int seed, unsigned int nSamples, int low, int high);
+
+        mphy::LabelledData GetData();
+    };
+
+}
 
 #endif //MPHYG0022CW1_MPHYDATACREATOR_H

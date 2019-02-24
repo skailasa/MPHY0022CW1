@@ -8,14 +8,21 @@
 #include <string>
 #include "mphyDataCreatorI.h"
 
-class mphyFileLoaderDataCreator: public mphyAbstractDataCreator{
-private:
-    std::string _filepath;
-public:
-    mphyFileLoaderDataCreator();
-    ~mphyFileLoaderDataCreator();
-    mphyFileLoaderDataCreator(std::string filepath);
-    mphy::LabelledData GetData();
-};
+namespace mphy {
+
+    class FileLoaderDataCreator : public AbstractDataCreator {
+    private:
+        std::string _filepath;
+    public:
+        FileLoaderDataCreator();
+
+        ~FileLoaderDataCreator();
+
+        FileLoaderDataCreator(std::string filepath);
+
+        mphy::LabelledData GetData();
+    };
+
+}
 
 #endif //MPHYG0022CW1_MPHYFILELOADERDATACREATOR_H

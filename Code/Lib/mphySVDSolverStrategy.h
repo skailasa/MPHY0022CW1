@@ -6,13 +6,16 @@
 #define MPHYG0022CW1_MPHYSVDSOLVERSTRATEGY_H
 
 #include "mphyLinearModelSolverStrategyI.h"
+namespace mphy {
+    class SVDSolverStrategy : public AbstractSolver {
+    public:
+        SVDSolverStrategy();
 
-class mphySVDSolverStrategy: public mphyAbstractSolver{
-public:
-    mphySVDSolverStrategy();
-    ~mphySVDSolverStrategy();
-    mphy::LinearSolution FitData(mphy::LabelledData);
-};
+        ~SVDSolverStrategy();
+
+        mphy::LinearSolution FitData(mphy::LabelledData);
+    };
+}
 
 
 #endif //MPHYG0022CW1_MPHYSVDSOLVERSTRATEGY_H
