@@ -15,10 +15,7 @@
 set(DATA_DIR ${CMAKE_SOURCE_DIR}/Testing/Data)
 set(TMP_DIR ${CMAKE_BINARY_DIR}/Testing/Temporary)
 
-set(TEST_CASES
-  mphyBasicTest
-        mphyLeastSquaresSolverTests
-)
+set(TEST_CASES mphyLeastSquaresSolverTests)
 
 foreach(_test_case ${TEST_CASES})
   add_executable(${_test_case} ${_test_case}.cpp mphyCatchMain.cpp)

@@ -38,7 +38,7 @@ int main(int argc, char **argv) {
 
     Solvers S;
 
-    CLI::App app("Linear Regression");
+    CLI::App app("Linear Regression App:");
     std::string file;
     std::string solver;
 
@@ -53,8 +53,8 @@ int main(int argc, char **argv) {
 
     else if (file == "" | solver == "") std::cout << "You must specify a data "
                                                      "file AND solver method "
-                                                     "see -h or --help for usage "
-                                                     "instructions \n";
+                                                     "see -h or --help for further "
+                                                     "usage instructions \n";
 
     else if (file!="" && solver!="") {
         auto data = mphyFileLoaderDataCreator(file).GetData();
