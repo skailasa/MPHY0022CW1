@@ -34,7 +34,7 @@ int main(int argc, char **argv) {
                "e.g. \n"
                "./LinearRegression --file data.txt --solver normal \n"
                "================================================================ \n"
-               "See -h or --help to for usage instructions \n";
+               "See -h or --help for further usage instructions \n";
 
     Solvers S;
 
@@ -53,7 +53,7 @@ int main(int argc, char **argv) {
 
     else if (file == "" | solver == "") std::cout << "You must specify a data "
                                                      "file AND solver method "
-                                                     "see -h or --help for further "
+                                                     "see -h or --help for "
                                                      "usage instructions \n";
 
     else if (file!="" && solver!="") {
