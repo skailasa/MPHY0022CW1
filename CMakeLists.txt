@@ -190,6 +190,8 @@ foreach(type LIBRARY RUNTIME ARCHIVE)
 endforeach()
 
 include_directories(${CMAKE_SOURCE_DIR}/Code/3rdParty/Eigen-3.2.2.1)
+include_directories(${CMAKE_SOURCE_DIR}/Code/3rdParty/CLI11-1.7.1)
+
 include_directories(${CMAKE_SOURCE_DIR}/Code/Lib)
 include_directories(${CMAKE_BINARY_DIR})
 

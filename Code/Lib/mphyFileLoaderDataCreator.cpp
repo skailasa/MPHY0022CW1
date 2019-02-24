@@ -3,9 +3,11 @@
 //
 
 #include <string>
-#include <fstream>
 #include <iostream>
+#include <sstream>
+#include <fstream>
 #include "mphyFileLoaderDataCreator.h"
+#include "mphyExceptionMacro.h"
 
 // constructors/destructors
 
@@ -20,26 +22,27 @@ mphyFileLoaderDataCreator::mphyFileLoaderDataCreator(std::string filepath):
 
 mphy::LabelledData mphyFileLoaderDataCreator::GetData() {
 
-    // Initialise output buffer
     mphy::LabelledData res;
 
-    // Read file and clean up
-    std::ifstream infile;
-    infile.open(this->_filepath);
-    if(infile.fail())
-    {
-        std::cout << "Error in opening file, check paths" << std::endl;
-    }
+    try {
+        std::ifstream file;
 
-    else {
+        file.open(this->_filepath);
+
+        if (!file) throw std::runtime_error( "Error opening file!" );
+
         std::pair<double, double> input;
 
-        while (infile >> input.first >> input.second) {
+        while (file >> input.first >> input.second) {
             res.push_back(input);
         }
+
+        file.close();
     }
 
-    infile.close();
-
+    catch (std::exception const& e){
+        std::cerr << e.what() << '\n';
+        throw;
+    }
     return res;
 }

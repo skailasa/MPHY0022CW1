@@ -2,6 +2,7 @@
 // Created by Srinath Kailasa on 2019-02-20.
 //
 
+#include <iostream>
 #include "catch.hpp"
 #include "mphyCatchMain.h"
 #include "mphyLinearDataCreator.h"
@@ -54,11 +55,25 @@ TEST_CASE("Test file reader", "[file-reader]")
   // Store first line of file, to check read in value against
   std::pair<double, double> firstLine1(0.170065, 3.38151);
 
-
   mphy::LabelledData testData2;
   testData2 = mphyFileLoaderDataCreator("Testing/Data/TestData2.txt").GetData();
   // Store first line of file, to check read in value against
   std::pair<double, double> firstLine2(0.170065, 2.55157);
+
+
+    SECTION("Test that we can handle incorrect file paths") {
+      bool thrown = false;
+      try
+      {
+        mphyFileLoaderDataCreator("FAKE_DATA").GetData();
+      }
+      catch(const  std::exception& e)
+      {
+        REQUIRE(std::string(e.what()) == "Error opening file!");
+        thrown = true;
+      }
+      REQUIRE(thrown);
+    }
 
   SECTION("Test file data read correctly") {
     REQUIRE(testData1[0].first == firstLine1.first);
