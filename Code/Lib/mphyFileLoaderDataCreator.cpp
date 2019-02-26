@@ -25,26 +25,20 @@ namespace mphy {
 
         mphy::LabelledData res;
 
-        try {
-            std::ifstream file;
+        std::ifstream file;
 
-            file.open(this->_filepath);
+        file.open(this->_filepath);
 
-            if (!file) throw std::runtime_error("Error opening file!");
+        if (!file) throw std::runtime_error("Error opening file!");
 
-            std::pair<double, double> input;
+        std::pair<double, double> input;
 
-            while (file >> input.first >> input.second) {
-                res.push_back(input);
-            }
-
-            file.close();
+        while (file >> input.first >> input.second) {
+            res.push_back(input);
         }
 
-        catch (std::exception const &e) {
-            std::cerr << e.what() << '\n';
-            throw;
-        }
+        file.close();
+
         return res;
     }
 }

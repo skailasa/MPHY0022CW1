@@ -49,27 +49,33 @@ int main(int argc, char **argv) {
                                                      "usage instructions \n";
 
     else if (file!="" && solver!="") {
-        auto data = mphy::FileLoaderDataCreator(file).GetData();
 
-        if (solver == "svd") {
-            auto res = mphy::SVDSolverStrategy().FitData(data);
-            std::cout << "theta_0: "
-                      << res.first
-                      << " theta_1: "
-                      << res.second << std::endl;
-        }
-        else if (solver == "normal") {
-            auto res = mphy::NormalEquationSolverStrategy().FitData(data);
-            std::cout << "theta_0: "
-                      << res.first
-                      << " theta_1: "
-                      << res.second << std::endl;
-        }
+       try {
+           auto data = mphy::FileLoaderDataCreator(file).GetData();
 
-        else {
-            std::cout << "You must choose a supported solver strategy!"
-                      << std::endl;
-        };
+           if (solver == "svd") {
+               auto res = mphy::SVDSolverStrategy().FitData(data);
+               std::cout << "theta_0: "
+                         << res.first
+                         << " theta_1: "
+                         << res.second << std::endl;
+           }
+           else if (solver == "normal") {
+               auto res = mphy::NormalEquationSolverStrategy().FitData(data);
+               std::cout << "theta_0: "
+                         << res.first
+                         << " theta_1: "
+                         << res.second << std::endl;
+           }
+
+           else {
+               std::cout << "You must choose a supported solver strategy!"
+                         << std::endl;
+           };
+       } catch (std::exception const &e) {
+           std::cerr << e.what() << '\n';
+       }
+
     }
 
     return 0;
