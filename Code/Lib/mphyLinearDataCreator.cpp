@@ -1,13 +1,23 @@
+/*=============================================================================
+
+  MPHYG0022CW1: CW1, 2019: Linear Regression.
+
+  Copyright (c) University College London (UCL). All rights reserved.
+
+  This software is distributed WITHOUT ANY WARRANTY; without even
+  the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+  PURPOSE.
+
+  See LICENSE.txt in the top level directory for details.
+
+=============================================================================*/
 
 #include <iostream>
 #include <random>
 #include "mphyLinearDataCreator.h"
 
 namespace mphy {
-// constructors/destructors
-
     LinearDataCreator::LinearDataCreator() = default;
-
     LinearDataCreator::~LinearDataCreator() = default;
 
     LinearDataCreator::LinearDataCreator(
@@ -17,7 +27,6 @@ namespace mphy {
             int high) :
             _seed(seed), _nSamples(nSamples), _low(low), _high(high) {};
 
-// methods
 
     mphy::LabelledData LinearDataCreator::GetData() {
 

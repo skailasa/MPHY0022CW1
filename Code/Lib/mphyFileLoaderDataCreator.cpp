@@ -1,6 +1,16 @@
-//
-// Created by Srinath Kailasa on 2019-02-22.
-//
+/*=============================================================================
+
+  MPHYG0022CW1: CW1, 2019: Linear Regression.
+
+  Copyright (c) University College London (UCL). All rights reserved.
+
+  This software is distributed WITHOUT ANY WARRANTY; without even
+  the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+  PURPOSE.
+
+  See LICENSE.txt in the top level directory for details.
+
+=============================================================================*/
 
 #include <string>
 #include <iostream>
@@ -10,17 +20,15 @@
 #include "mphyExceptionMacro.h"
 
 namespace mphy {
-    // constructors/destructors
 
     FileLoaderDataCreator::FileLoaderDataCreator() = default;
-
     FileLoaderDataCreator::~FileLoaderDataCreator() = default;
+
 
     FileLoaderDataCreator::FileLoaderDataCreator(std::string filepath) :
             _filepath(std::move(filepath)) {};
 
-    // methods
-
+    // Implementation of GetData, throws error if filepath not found
     mphy::LabelledData FileLoaderDataCreator::GetData() {
 
         mphy::LabelledData res;

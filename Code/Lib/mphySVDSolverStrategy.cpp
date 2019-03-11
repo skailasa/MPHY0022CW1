@@ -1,6 +1,16 @@
-//
-// Created by Srinath Kailasa on 2019-02-22.
-//
+/*=============================================================================
+
+  MPHYG0022CW1: CW1, 2019: Linear Regression.
+
+  Copyright (c) University College London (UCL). All rights reserved.
+
+  This software is distributed WITHOUT ANY WARRANTY; without even
+  the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+  PURPOSE.
+
+  See LICENSE.txt in the top level directory for details.
+
+=============================================================================*/
 
 #include <iostream>
 #include <Eigen/Dense>
@@ -11,14 +21,11 @@
 using namespace Eigen;
 
 namespace mphy {
-// constructors/destructors
 
     SVDSolverStrategy::SVDSolverStrategy() = default;
-
     SVDSolverStrategy::~SVDSolverStrategy() = default;
 
-// methods
-
+    // Strategy to solve the linear least squares problems using SVD
     mphy::LinearSolution SVDSolverStrategy::FitData(mphy::LabelledData data) {
         // Initialise storage buffers
         mphy::LinearSolution result;

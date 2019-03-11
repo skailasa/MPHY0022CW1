@@ -1,21 +1,27 @@
-//
-// Created by Srinath Kailasa on 2019-02-20.
-//
+/*=============================================================================
+
+  MPHYG0022CW1: CW1, 2019: Linear Regression.
+
+  Copyright (c) University College London (UCL). All rights reserved.
+
+  This software is distributed WITHOUT ANY WARRANTY; without even
+  the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+  PURPOSE.
+
+  See LICENSE.txt in the top level directory for details.
+
+=============================================================================*/
 
 #include <iostream>
 #include "Eigen/Dense"
 #include "mphyNormalEquationSolverStrategy.h"
 
 namespace mphy {
-// constructors/destructors
 
     NormalEquationSolverStrategy::NormalEquationSolverStrategy() = default;
-
     NormalEquationSolverStrategy::~NormalEquationSolverStrategy() = default;
 
-// methods
-
-// Strategy to solve the linear least squares problems using the normal equation
+    // Strategy to solve the linear least squares problems using the normal equation
     mphy::LinearSolution NormalEquationSolverStrategy::FitData(mphy::LabelledData data) {
         // Initialise storage buffers
         mphy::LinearSolution result;

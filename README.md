@@ -11,7 +11,7 @@ Build Application
 #### Windows (using cmake gui and visual studio):
 Taken from [link](http://rits.github-pages.ucl.ac.uk/research-computing-with-cpp/01research/sec03CMake.html)
 1. Run cmake-gui.exe
-1. Select source folde
+1. Select source folder
 1. Specify new build folder (ensure it's out of source)
 1. Hit configure
 1. When asked, specify compiler
