@@ -1,37 +1,98 @@
 MPHY0022CW1
-------------------
+------------
+This application was completed as a part of a piece of coursework for the 
+Research Computing with C++ module.
 
-[![Build Status](https://travis-ci.com/MattClarkson/MPHY0022CW1.svg?branch=master)](https://travis-ci.com/MattClarkson/MPHY0022CW1)
-[![Build Status](https://ci.appveyor.com/api/projects/status/5pm89ej732c1ekf0/branch/master)](https://ci.appveyor.com/project/MattClarkson/cmakecatch2)
+Use this app to solve a 1D linear system, using either the normal equations
+or singular value decomposition.
 
+Build Application
+-----------------
+#### Windows (using cmake gui and visual studio):
+Taken from [link](http://rits.github-pages.ucl.ac.uk/research-computing-with-cpp/01research/sec03CMake.html)
+1. Run cmake-gui.exe
+1. Select source folde
+1. Specify new build folder (ensure it's out of source)
+1. Hit configure
+1. When asked, specify compiler
+1. Set flags and repeatedly configure
+1. When generate option is present, hit generate
+1. Compile, normally using Visual Studio 
 
-Purpose
--------
+#### *nix (using terminal)
 
-This is a demo project to demonstrate a reasonable folder structure for [CMake](https://cmake.org/) based projects,
-that use [CTest](https://cmake.org/) to run unit tests via [Catch](https://github.com/catchorg/Catch2).
+Out of source build
 
+```
+# exit source directory
+cd ../
 
-Credits
--------
+# create build directory
+mkdir build
+cd build
 
-This project was developed as a teaching aid for UCL's ["Research Computing with C++"](http://rits.github-pages.ucl.ac.uk/research-computing-with-cpp/)
-course developed by [Dr. James Hetherington](http://www.ucl.ac.uk/research-it-services/people/james)
-and [Dr. Matt Clarkson](https://iris.ucl.ac.uk/iris/browse/profile?upi=MJCLA42).
-
-Build Instructions
-------------------
-
-This project itself can be built if you just want to test it. In Linux terms that
-would be:
-``` cmake
-git clone https://github.com/MattClarkson/MPHY0022CW1
-mkdir MPHY0022CW1-Build
-cd MPHY0022CW1-Build
-cmake ../MPHY0022CW1
+# configure and build
+ccmake ../MPHY0022CW1
 make
 ```
-But ideally, you should use this as a template to create your own project. To do so,
-please refer to the [CMakeTemplateRenamer](https://github.com/MattClarkson/CMakeTemplateRenamer)
-which will show you how to clone this repository, and rename all the variables to names of your choice.
-Then you would simply build your new project, using cmake, as shown above.
+
+Navigate to binary application `LinearRegression`
+```bash
+cd bin
+
+# run app
+./LinearRegression
+```
+
+Usage
+-----
+
+```bash
+./LinearRegression -f, --file <data_file> -s, --solver <solver_method>
+
+# for example
+./LinarRegression -f data.txt -s 'normal'
+
+# or 
+./LinearRegression data.txt 'normal'
+```
+
+Build Tests
+-----------
+
+#### Windows (using visual studio):
+Ctest is fully integrated with test explorer in visual studio, allowing you
+to build and run tests from there. See the following 
+[link](https://docs.microsoft.com/en-us/visualstudio/test/how-to-use-ctest-for-cpp?view=vs-2017)
+for instructions.
+
+#### *nix (using terminal)
+If you have built the app, navigate to build directory and run tests with CTest
+
+```asm
+cd build
+ctest
+```
+
+Otherwise, follow instructions above to build app, ensuring to select the
+build tests configuration in the CMake gui.
+
+Add to Bash Profile (*nix users)
+--------------------------------
+Adding to bash profile will allow you to use the application from your Terminal,
+without having to remember where you've stored the app binary.
+
+Create alias in `.bash_profile` (mac) `.bashrc` Linux.
+
+```
+alias linreg='~/Path/To/App/LinearRegression'
+```
+
+Reset bash settings
+
+e.g.
+```
+source ~/.bash_profile
+```
+
+And access from a new terminal window.

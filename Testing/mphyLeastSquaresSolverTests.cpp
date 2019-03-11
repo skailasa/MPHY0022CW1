@@ -53,10 +53,7 @@ TEST_CASE("Test file reader", "[file-reader]")
   // Read in both test files
   mphy::LabelledData testData1;
 
-  std::cout << "here" << TEST_DATA_1 << std::endl;
-  std::cout << "here" << TEST_DATA_2 << std::endl;
-
-  /*testData1 = mphy::FileLoaderDataCreator(TEST_DATA_1).GetData();
+  testData1 = mphy::FileLoaderDataCreator(TEST_DATA_1).GetData();
   // Store first line of file, to check read in value against
   std::pair<double, double> firstLine1(0.170065, 3.38151);
 
@@ -64,7 +61,6 @@ TEST_CASE("Test file reader", "[file-reader]")
   testData2 = mphy::FileLoaderDataCreator(TEST_DATA_2).GetData();
   // Store first line of file, to check read in value against
   std::pair<double, double> firstLine2(0.170065, 2.55157);
-
 
     SECTION("Test that we can handle incorrect file paths") {
       bool thrown = false;
@@ -90,7 +86,7 @@ TEST_CASE("Test file reader", "[file-reader]")
   SECTION("Check correct number of data points read in") {
     REQUIRE(testData1.size() == 1000);
     REQUIRE(testData2.size() == 1000);
-  }*/
+  }
 }
 
 
