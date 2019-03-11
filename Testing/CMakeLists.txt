@@ -14,6 +14,8 @@
 
 set(DATA_DIR ${CMAKE_SOURCE_DIR}/Testing/Data)
 set(TMP_DIR ${CMAKE_BINARY_DIR}/Testing/Temporary)
+set(TEST_DATA_1 ${DATA_DIR}/TestData1.txt)
+set(TEST_DATA_2 ${DATA_DIR}/TestData2.txt)
 
 set(TEST_CASES mphyLeastSquaresSolverTests)
 
@@ -22,11 +24,14 @@ foreach(_test_case ${TEST_CASES})
   target_link_libraries(${_test_case} ${MPHYG0022CW1_LIBRARIES} ${ALL_THIRD_PARTY_LIBRARIES})
 endforeach()
 
-# Adding tests is done outside the above loop,
-# as each test will need different arguments.
+# Add fixture files to compile definitions
+if (TEST_DATA_1)
+  target_compile_definitions(mphyLeastSquaresSolverTests PRIVATE TEST_DATA_1="${TEST_DATA_1}")
+endif()
 
-##################################################################################################
-# Dont forget its:  add_test(<test name (globally unique) > <exe name> <argument1> <argument2>
-##################################################################################################
+if (TEST_DATA_1)
+  target_compile_definitions(mphyLeastSquaresSolverTests PRIVATE TEST_DATA_2="${TEST_DATA_2}")
+endif()
 
-add_test(Example ${EXECUTABLE_OUTPUT_PATH}/mphyBasicTest)
+# Add tests
+add_test(project_tests ${EXECUTABLE_OUTPUT_PATH}/mphyLeastSquaresSolverTests)

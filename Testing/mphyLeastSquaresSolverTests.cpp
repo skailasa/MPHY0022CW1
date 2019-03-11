@@ -3,6 +3,7 @@
 //
 
 #include <iostream>
+#include <string>
 #include "catch.hpp"
 #include "mphyCatchMain.h"
 #include "mphyLinearDataCreator.h"
@@ -23,24 +24,24 @@ TEST_CASE( "Test linear data creator", "[data-creator]")
   mphy::LabelledData data = m.GetData();
 
   // Calculate average of generated data
-  double yAvg;
-  double yTotal;
-  double xAvg;
-  double xTotal;
+  double yAvg = 0;
+  double yTotal = 0;
+  double xAvg = 0 ;
+  double xTotal = 0;
 
   for(int i=0; i<data.size(); i++) {
     xTotal += data[i].first;
     yTotal += data[i].second;
   }
 
-  yAvg = yTotal/nSamples;
-  xAvg = xTotal/nSamples;
-
   SECTION("Test correct size") {
     REQUIRE(data.size() == nSamples);
   }
 
   SECTION("Test approximately correct distribution") {
+    yAvg = yTotal/nSamples;
+    xAvg = xTotal/nSamples;
+
     REQUIRE(xAvg == Approx(50).epsilon(0.05));
     REQUIRE(yAvg == Approx(50).epsilon(0.05));
   }
@@ -51,12 +52,16 @@ TEST_CASE("Test file reader", "[file-reader]")
 {
   // Read in both test files
   mphy::LabelledData testData1;
-  testData1 = mphy::FileLoaderDataCreator("Testing/Data/TestData1.txt").GetData();
+
+  std::cout << "here" << TEST_DATA_1 << std::endl;
+  std::cout << "here" << TEST_DATA_2 << std::endl;
+
+  /*testData1 = mphy::FileLoaderDataCreator(TEST_DATA_1).GetData();
   // Store first line of file, to check read in value against
   std::pair<double, double> firstLine1(0.170065, 3.38151);
 
   mphy::LabelledData testData2;
-  testData2 = mphy::FileLoaderDataCreator("Testing/Data/TestData2.txt").GetData();
+  testData2 = mphy::FileLoaderDataCreator(TEST_DATA_2).GetData();
   // Store first line of file, to check read in value against
   std::pair<double, double> firstLine2(0.170065, 2.55157);
 
@@ -85,7 +90,7 @@ TEST_CASE("Test file reader", "[file-reader]")
   SECTION("Check correct number of data points read in") {
     REQUIRE(testData1.size() == 1000);
     REQUIRE(testData2.size() == 1000);
-  }
+  }*/
 }
 
 

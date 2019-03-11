@@ -61,7 +61,7 @@ option(BUILD_SHARED_LIBS "Build Shared Libraries" OFF)
 # Setup Testing (dashboards etc.).
 ######################################################################
 include(mphySetupTesting)
-
+include(CTest)
 
 ######################################################################
 # Setting supported build types. Should ONLY be Release or Debug.
